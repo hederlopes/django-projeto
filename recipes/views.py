@@ -5,4 +5,3 @@ def home(request):
     return render(request, 'recipes/home.html', context={
         'name': 'Heder Lopes',
         })
-
