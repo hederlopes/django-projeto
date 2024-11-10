@@ -8,15 +8,16 @@ def home(request):
         is_published=True
     ).order_by('-id')
     return render(request, 'recipes/pages/home.html', context={
-        'recipes': recipes,        
+        'recipes': recipes,
         # 'recipes': [make_recipe() for _ in range(10)],   ###usado para buscar de factory
     })
+
 
 def category(request, category_id):
     recipes = get_list_or_404(
         Recipe.objects.filter(
-        category__id=category_id,
-        is_published=True,
+            category__id=category_id,
+            is_published=True,
         ).order_by('-id'))
 
     return render(request, 'recipes/pages/category.html', context={
@@ -25,16 +26,12 @@ def category(request, category_id):
     })
 
 
-
 def recipe(request, id):
     recipe = Recipe.objects.get(
         id=id,
         is_published=True,
     )
     return render(request, 'recipes/pages/recipe-view.html', context={
-        'recipe': recipe,       
+        'recipe': recipe,
         'is_detail_page': True,
     })
-
-
- 
