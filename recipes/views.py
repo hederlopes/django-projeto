@@ -4,7 +4,6 @@ from recipes.models import Recipe, Category
 
 
 def home(request):
-
     recipes = Recipe.objects.filter(
         is_published=True
     ).order_by('-id')
